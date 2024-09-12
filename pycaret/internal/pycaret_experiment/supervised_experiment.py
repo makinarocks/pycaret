@@ -1307,7 +1307,7 @@ class _SupervisedExperiment(_TabularExperiment):
         model_only: bool = True,
         return_train_score: bool = False,
         error_score: Union[str, float] = 0.0,
-        **kwargs,
+        kwargs: dict = {},
     ) -> Any:
         """
         Internal version of ``create_model`` with private arguments.
@@ -1623,7 +1623,7 @@ class _SupervisedExperiment(_TabularExperiment):
         experiment_custom_tags: Optional[Dict[str, Any]] = None,
         verbose: bool = True,
         return_train_score: bool = False,
-        **kwargs,
+        kwargs: dict = {},
     ) -> Any:
         """
         This function creates a model and scores it using Cross Validation.
@@ -1721,7 +1721,7 @@ class _SupervisedExperiment(_TabularExperiment):
             This is useful when the user wants to do bias-variance tradeoff. A high CV
             training score with a low corresponding CV validation score indicates overfitting.
 
-        **kwargs:
+        kwargs: dict, default = {}
             Additional keyword arguments to pass to the estimator.
 
         Returns
@@ -1776,7 +1776,7 @@ class _SupervisedExperiment(_TabularExperiment):
             experiment_custom_tags=experiment_custom_tags,
             verbose=verbose,
             return_train_score=return_train_score,
-            **kwargs,
+            kwargs=kwargs,
         )
 
     def tune_model(
@@ -2724,7 +2724,7 @@ class _SupervisedExperiment(_TabularExperiment):
             groups=groups,
             fit_kwargs=fit_kwargs,
             return_train_score=return_train_score,
-            **best_params,
+            kwargs=best_params,
         )
         model_results = self.pull()
         self.logger.info(
